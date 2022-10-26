@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express');
-
 const mongoose = require('mongoose');
+const authRouter = require('./modules/auth/auth.router');
 
 
 mongoose.connect(process.env.MONGODB_URI, err => {
@@ -14,7 +14,7 @@ mongoose.connect(process.env.MONGODB_URI, err => {
 const app = express();
 app.use(express.json());
 
-
+app.use('/api/auth', authRouter);
 
 app.use('*', (req, res) => {
   res.send({ message: '404 not found' })
