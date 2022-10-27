@@ -1,9 +1,9 @@
-const TaskModel = require('./task');
+const SprintModel = require('./sprint');
 const jwt = require('jsonwebtoken');
 
 require('dotenv').config();
 
-const createTask = async (req, res) => {
+const createSprint = async (req, res) => {
     try {
         //     const token = req.headers.authorization;
 
@@ -33,31 +33,27 @@ const createTask = async (req, res) => {
         // console.log(token);
         // const senderUser = req.user
 
-        const { title, description, status, assignee, reporter, startTime, endTime } = req.body;
+        const { name, status, startTime, endTime , sprintGoal} = req.body;
 
-        const newTask = await TaskModel.create({
-            title,
-            description,
+        const newSprint = await SprintModel.create({
+            name,
             status,
-            assignee,
-            reporter,
             startTime,
-            endTime
-
-            //   createdBy: existedUser._id,
+            endTime,
+            sprintGoal
         });
 
-        res.send({ success: 1, data: newTask });
+        res.send({ success: 1, data: newSprint });
     } catch (error) {
         res.send({ success: 0, data: null, message: error.message })
     }
 }
-const deleteTask = async (req, res) => {
+const deleteSprint = async (req, res) => {
     try {
-        const { taskId } = req.params;
+        const { sprintId } = req.params;
 
-        const deleteTask = await TaskModel
-            .findByIdAndDelete(taskId);
+        const deletesprint = await SprintModel
+            .findByIdAndDelete(sprintId);
 
         res.send({ success: 1 });
     } catch (err) {
@@ -65,34 +61,34 @@ const deleteTask = async (req, res) => {
     }
 }
 
-const updateTask = async (req, res) => {
+const updateSprint = async (req, res) => {
     try {
-        const { taskId } = req.params;
-        const dataUpdateTask = req.body;
+        const { sprintId } = req.params;
+        const dataUpdateSprint = req.body;
 
-        const updatedTask = await TaskModel
-            .findByIdAndUpdate(taskId, dataUpdateTask, { new: true });
+        const updatedSprint = await SprintModel
+            .findByIdAndUpdate(sprintId, dataUpdateSprint, { new: true });
 
-        res.send({ success: 1, data: updatedTask });
+        res.send({ success: 1, data: updatedSprint });
     } catch (err) {
         res.status(400).send({ success: 0, data: null });
     }
 }
 
-const getTasks = async (req, res) => {
+const getSprints = async (req, res) => {
     try {
-        const tasks = await (await TaskModel
+        const sprints = await (await SprintModel
             .find({})
             // .skip(offset)
             // .limit(limit)
         );
-        const totalTasks = await TaskModel.countDocuments({});
+        const totalSprint = await SprintModel.countDocuments({});
         res.send(
             {
                 success: 1,
                 data: {
-                    tasks: tasks,
-                    total: totalTasks
+                    sprints: sprints,
+                    total: totalSprint
                 }
             });
     } catch (err) {
@@ -100,20 +96,20 @@ const getTasks = async (req, res) => {
     }
 }
 
-const getTask = async (req, res) => {
+const getSprint = async (req, res) => {
     try {
-        const { taskId } = req.params;
-        const task = await (await TaskModel
-            .findById(taskId)
+        const { sprintId } = req.params;
+        const sprint = await (await SprintModel
+            .findById(sprintId)
         );
         res.send(
             {
                 success: 1,
-                data: task
+                data: sprint
             });
     } catch (err) {
         res.status(400).send({ success: 0, data: [] });
     }
 }
 
-module.exports = { createTask, deleteTask, updateTask, getTasks, getTask }
+module.exports = { createSprint, deleteSprint, updateSprint, getSprint, getSprints }

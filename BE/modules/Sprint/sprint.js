@@ -1,30 +1,15 @@
 const mongoose = require('mongoose');
 
-const TaskSchema = new mongoose.Schema({
-    title: {
+const SprintSchema = new mongoose.Schema({
+    name: {
         type: String,
         require: true
-    },
-    description: {
-        type: String,
-
     },
     status: {
         type: String,
         require: true
     },
     backlogID: {
-        type: mongoose.Types.ObjectId,
-        require: true
-    },
-    sprintID: {
-        type: mongoose.Types.ObjectId
-    },
-    assignee: {
-        type: mongoose.Types.ObjectId,
-        require: true
-    },
-    reporter: {
         type: mongoose.Types.ObjectId,
         require: true
     },
@@ -36,13 +21,15 @@ const TaskSchema = new mongoose.Schema({
         type: Date,
         require: true
     },
-
+    sprintGoal: {
+        type: String
+    }
 },
     {
         // tự động thêm createdAt, updatedAt
         timestamps: true
     });
 
-const TaskModel = mongoose.model('Task', TaskSchema);
+const SprintModel = mongoose.model('Sprint', SprintSchema);
 
-module.exports = TaskModel;
+module.exports = SprintModel;

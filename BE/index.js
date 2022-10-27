@@ -1,7 +1,10 @@
 require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
+
 const authRouter = require('./modules/auth/auth.router');
+const projectRouter = require('./modules/project/project.router');
+const sprintRouter = require('./modules/Sprint/sprint.router');
 const taskRouter = require('./modules/Task/task.router');
 
 
@@ -16,6 +19,8 @@ const app = express();
 app.use(express.json());
 
 app.use('/api/auth', authRouter);
+app.use('/api/sprint', sprintRouter);
+app.use('/api/project', projectRouter);
 app.use('/api/task', taskRouter);
 
 app.use('*', (req, res) => {
