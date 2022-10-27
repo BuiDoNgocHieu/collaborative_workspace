@@ -1,41 +1,44 @@
 const mongoose = require('mongoose');
 
 const TaskSchema = new mongoose.Schema({
-    name:{
+    title: {
         type: String,
         require: true
     },
-    description:{
+    description: {
         type: String,
-        
+
     },
-    status:{
+    status: {
         type: String,
         require: true
     },
-    backlogID:{
+    backlogID: {
         type: mongoose.Types.ObjectId,
         require: true
     },
-    sprintID:{
+    sprintID: {
         type: mongoose.Types.ObjectId
     },
-    assignee:{
+    assignee: {
         type: mongoose.Types.ObjectId,
-        require:true
+        require: true
     },
-    reporter:{
+    reporter: {
         type: mongoose.Types.ObjectId,
-        require:true
+        require: true
+    },
+    date: {
+        type: Date,
+        require: true
     }
-  
-  }, 
-  {
-    // tự động thêm createdAt, updatedAt
-    timestamps: true
-  });
-  
-  const TaskModel = mongoose.model('User', TaskSchema);
-  
-  module.exports = TaskModel;
-  
+
+},
+    {
+        // tự động thêm createdAt, updatedAt
+        timestamps: true
+    });
+
+const TaskModel = mongoose.model('Task', TaskSchema);
+
+module.exports = TaskModel;
