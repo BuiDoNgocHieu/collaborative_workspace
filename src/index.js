@@ -6,8 +6,10 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import User from "./components/User/User";
-import Admin from "./components/Admin/Admin";
+import Board from "./components/board/Board";
+import Backlog from "./components/backlog/backlog";
+import Homepage from "./components/Home/homepage";
+import Login from "../src/components/Auth/login";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,10 +17,13 @@ root.render(
     {/* <React.StrictMode> */}
     <BrowserRouter>
       <Routes>
+        {/* nested router */}
         <Route path="/" element={<App />}>
-          <Route path="users" element={<User />} />
-          <Route path="admin" element={<Admin />} />
+          <Route index element={<Homepage />} />
         </Route>
+        <Route path="Board" element={<Board />} />
+        <Route path="Backlog" element={<Backlog />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
     {/* </React.StrictMode> */}
