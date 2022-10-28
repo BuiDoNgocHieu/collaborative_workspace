@@ -9,7 +9,6 @@ import TableProject from "./tableProject";
 
 const Admin = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const [pageCount, setPageCount] = useState(0);
 
   return (
     <div className="admin-container">

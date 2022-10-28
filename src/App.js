@@ -12,7 +12,6 @@ const App = () => {
         <div className="sidenav-container "></div>
         <div className="app-container">
           <Outlet />
-          {/* nested router */}
         </div>
       </div>
     </div>

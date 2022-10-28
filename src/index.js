@@ -10,6 +10,9 @@ import Board from "./components/board/Board";
 import Backlog from "./components/backlog/backlog";
 import Homepage from "./components/Home/homepage";
 import Login from "../src/components/Auth/login";
+import Register from "../src/components/Auth/register";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -24,9 +27,22 @@ root.render(
         <Route path="Board" element={<Board />} />
         <Route path="Backlog" element={<Backlog />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
     {/* </React.StrictMode> */}
+    <ToastContainer
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+    />
   </Provider>
 );
 

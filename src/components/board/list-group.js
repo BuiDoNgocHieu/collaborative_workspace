@@ -32,14 +32,14 @@ const ListGroup = () => {
   return (
     <div className="board-content">
       <div className="column">
-        <header></header>
+        <header>To do list</header>
         <ul className="card-list">
-          <li className="card-item">aaaaaaaaaaaaaaaaaaaa</li>
-          <li className="card-item">aaaaaaaaaaaaaaaaaaaa</li>
+          <li className="card-item">Làm front end</li>
+          <li className="card-item">thiết thế database</li>
 
-          <li className="card-item">aaaaaaaaaaaaaaaaaaaa</li>
+          <li className="card-item">làm back end</li>
 
-          <li className="card-item">aaaaaaaaaaaaaaaaaaaa</li>
+          <li className="card-item">nộp code</li>
         </ul>
 
         <footer>
@@ -56,14 +56,15 @@ const ListGroup = () => {
         </footer>
       </div>
       <div className="column">
-        <header></header>
+        <header>In Progress</header>
         <ul className="card-list">
-          <li className="card-item">aaaaaaaaaaaaaaaaaaaa</li>
-          <li className="card-item">aaaaaaaaaaaaaaaaaaaa</li>
+          <li className="card-item">Làm front end</li>
+          <li className="card-item">thiết thế database</li>
 
-          <li className="card-item">aaaaaaaaaaaaaaaaaaaa</li>
+          <li className="card-item">làm back end</li>
 
-          <li className="card-item">aaaaaaaaaaaaaaaaaaaa</li>
+          <li className="card-item">nộp code</li>
+          <li className="card-item">teste làm việc</li>
         </ul>
 
         <footer>
@@ -80,16 +81,15 @@ const ListGroup = () => {
         </footer>
       </div>
       <div className="column">
-        <header></header>
+        <header>Done</header>
         <ul className="card-list">
-          <li className="card-item">aaaaaaaaaaaaaaaaaaaa</li>
-          <li className="card-item">aaaaaaaaaaaaaaaaaaaa</li>
-          <li className="card-item">aaaaaaaaaaaaaaaaaaaa</li>
-          <li className="card-item">aaaaaaaaaaaaaaaaaaaa</li>
+          <li className="card-item">Làm front end</li>
+          <li className="card-item">thiết thế database</li>
 
-          <li className="card-item">aaaaaaaaaaaaaaaaaaaa</li>
+          <li className="card-item">làm back end</li>
 
-          <li className="card-item">aaaaaaaaaaaaaaaaaaaa</li>
+          <li className="card-item">nộp code</li>
+          <li className="card-item">teste làm việc</li>
         </ul>
 
         <footer>

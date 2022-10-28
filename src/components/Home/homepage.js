@@ -15,7 +15,7 @@ const Homepage = (props) => {
             The project management tool teams actually* want to use
           </div>
           <div className="second-tittle">
-            Let Trello keep your tasks, projects, and due dates together, so
+            Let my app keep your tasks, projects, and due dates together, so
             your team can focus on the substance of doing.
           </div>
           <div className="third-tittle">
