@@ -1,8 +1,8 @@
 .board-content {
-    height: 70vh;
+    height: 60vh;
     display: flex;
     margin: 0 20px 20px;
-    overflow-x: hidden;
+    overflow-x: auto;
     overflow-y: auto;
     .column {
         flex: 0 0 auto;
@@ -32,7 +32,6 @@
             line-height: 36px;
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
-            background-color: palevioletred;
         }
         ul {
             list-style-type: none;
@@ -40,7 +39,7 @@
             max-height: calc(100% - 36px - 36px);
             overflow-y: auto;
             li {
-                background-color: antiquewhite;
+                background-color: rgb(236, 234, 230);
                 padding: 10px;
                 border-radius: 2px;
                 &:last-child {

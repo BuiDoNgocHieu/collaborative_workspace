@@ -5,6 +5,11 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import ListGroup from "./list-group";
 import { useState } from "react";
+import Search from "../search";
+import { Link } from "react-router-dom";
+import { IoIosPersonAdd } from "react-icons/io";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const Board = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -24,14 +29,32 @@ const Board = () => {
             {" "}
             <div>Projects/Reactjs/Project backlog </div>
             <span>
-              <FaUser className="icon" /> Hello user
+              <FaUser className="icon" />
+              <Link to="/login">Login</Link>{" "}
             </span>
           </div>
           <div className="name"> Project backlog - Board name </div>
-          <button type="button" class="btn btn-success button">
-            <AiOutlinePlusCircle /> create New backlog
-          </button>
-          <div className="board">
+          <Search />
+          <div className="line">
+            <button type="button" class="btn btn-success button  ">
+              <div>
+                <AiOutlinePlusCircle /> create New backlog
+              </div>
+            </button>{" "}
+            <DropdownButton id="dropdown-basic-button" title="(4)&nbsp;user">
+              <Dropdown.Item href="#/action-1">Sơn</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Hiếu</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Đạt</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Huy</Dropdown.Item>
+            </DropdownButton>
+            <button type="button" class="btn btn-light button  ">
+              <div>
+                <IoIosPersonAdd /> invite user
+              </div>
+            </button>{" "}
+          </div>
+
+          <div className="board" style={{ fontSize: "25px" }}>
             <ListGroup />
           </div>
         </div>

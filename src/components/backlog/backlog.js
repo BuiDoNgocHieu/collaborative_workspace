@@ -3,6 +3,8 @@ import "./backlog.scss";
 import { FaBars } from "react-icons/fa";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
+import Search from "../search";
+import { Link } from "react-router-dom";
 
 import { useState } from "react";
 import TableProject from "./tableProject";
@@ -25,10 +27,13 @@ const Admin = () => {
             {" "}
             <div>Projects/Reactjs/Project manage </div>
             <span>
-              <FaUser className="icon" /> Hello user
+              <FaUser className="icon" />
+              <Link to="/login">Login</Link>{" "}
             </span>
           </div>
           <div className="name"> Project backlog</div>
+          <Search />
+
           <button type="button" class="btn btn-success button">
             <AiOutlinePlusCircle /> create New Project
           </button>

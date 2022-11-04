@@ -1,8 +1,8 @@
 import "./list-group.scss";
-import { AiOutlinePlus } from "react-icons/ai";
 import { useState, useEffect } from "react";
 import { isEmpty } from "lodash";
 import { InitialData } from "../action/action";
+import Column from "./column";
 
 const ListGroup = () => {
   const [board, setBoard] = useState({});
@@ -31,80 +31,9 @@ const ListGroup = () => {
   }
   return (
     <div className="board-content">
-      <div className="column">
-        <header>To do list</header>
-        <ul className="card-list">
-          <li className="card-item">Làm front end</li>
-          <li className="card-item">thiết thế database</li>
-
-          <li className="card-item">làm back end</li>
-
-          <li className="card-item">nộp code</li>
-        </ul>
-
-        <footer>
-          {" "}
-          <AiOutlinePlus
-            style={{
-              marginRight: "10px",
-              marginLeft: "25px",
-              fontSize: "20px",
-              color: "green",
-            }}
-          />
-          Add another card
-        </footer>
-      </div>
-      <div className="column">
-        <header>In Progress</header>
-        <ul className="card-list">
-          <li className="card-item">Làm front end</li>
-          <li className="card-item">thiết thế database</li>
-
-          <li className="card-item">làm back end</li>
-
-          <li className="card-item">nộp code</li>
-          <li className="card-item">teste làm việc</li>
-        </ul>
-
-        <footer>
-          {" "}
-          <AiOutlinePlus
-            style={{
-              marginRight: "10px",
-              marginLeft: "25px",
-              fontSize: "20px",
-              color: "green",
-            }}
-          />
-          Add another card
-        </footer>
-      </div>
-      <div className="column">
-        <header>Done</header>
-        <ul className="card-list">
-          <li className="card-item">Làm front end</li>
-          <li className="card-item">thiết thế database</li>
-
-          <li className="card-item">làm back end</li>
-
-          <li className="card-item">nộp code</li>
-          <li className="card-item">teste làm việc</li>
-        </ul>
-
-        <footer>
-          {" "}
-          <AiOutlinePlus
-            style={{
-              marginRight: "10px",
-              marginLeft: "25px",
-              fontSize: "20px",
-              color: "green",
-            }}
-          />
-          Add another card
-        </footer>
-      </div>
+      {columns.map((column, index) => (
+        <Column key={index} column={column} />
+      ))}
     </div>
   );
 };

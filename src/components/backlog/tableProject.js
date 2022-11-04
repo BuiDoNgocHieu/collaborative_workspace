@@ -7,11 +7,12 @@ import { AiFillEdit } from "react-icons/ai";
 import { MdOutlineRemoveCircleOutline } from "react-icons/md";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Button from "react-bootstrap/Button";
-
+import { InitialData } from "../action/action";
 import ReactPaginate from "react-paginate";
 
 const TableProject = (props) => {
   // Invoke when user click to request another page.
+  const dataTable = InitialData;
   const [pageCount, setPageCount] = useState(0);
 
   const handlePageClick = (event) => {
@@ -360,59 +361,6 @@ const TableProject = (props) => {
           <tr>
             <th scope="row" style={{ fontSize: "25px" }}>
               7
-            </th>
-            <td style={{ color: "blue", fontSize: "25px" }}>ReactJs native</td>
-            <td style={{ fontSize: "25px" }}>git@github.com:aaaa/new.git</td>
-            <td>
-              <DropdownButton id="dropdown-basic-button" title="(4)&nbsp;user">
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-              </DropdownButton>
-            </td>
-            <td style={{ fontSize: "25px" }}>10/12/2022</td>
-            <td>
-              {" "}
-              <Button variant="primary">Admin</Button>
-            </td>
-            <td>
-              <span>
-                <FaRegEye
-                  style={{
-                    color: "red",
-                    fontSize: "30px",
-                    marginRight: "10px",
-                    cursor: "pointer",
-                  }}
-                />
-              </span>
-              <span>
-                <AiFillEdit
-                  style={{
-                    color: "blue",
-                    fontSize: "30px",
-                    marginRight: "15px",
-                    marginLeft: "15px",
-                    cursor: "pointer",
-                  }}
-                />
-              </span>
-              <span>
-                {" "}
-                <MdOutlineRemoveCircleOutline
-                  style={{
-                    color: "blue",
-                    fontSize: "30px",
-                    marginRight: "10px",
-                    cursor: "pointer",
-                  }}
-                />
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row" style={{ fontSize: "25px" }}>
-              8
             </th>
             <td style={{ color: "blue", fontSize: "25px" }}>ReactJs native</td>
             <td style={{ fontSize: "25px" }}>git@github.com:aaaa/new.git</td>

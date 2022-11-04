@@ -54,6 +54,24 @@ export const InitialData = {
               columnId: "column-1",
               tittle: "tittle-card 7",
             },
+            {
+              id: "card-7",
+              boardId: "board-1",
+              columnId: "column-1",
+              tittle: "tittle-card 8",
+            },
+            {
+              id: "card-7",
+              boardId: "board-1",
+              columnId: "column-1",
+              tittle: "tittle-card 9",
+            },
+            {
+              id: "card-7",
+              boardId: "board-1",
+              columnId: "column-1",
+              tittle: "tittle-card 10",
+            },
           ],
         },
         {
@@ -117,7 +135,7 @@ export const InitialData = {
         {
           id: "column-1",
           boardId: "board-2",
-          tittle: "to do list",
+          tittle: " list",
           cardOder: [
             "card-1",
             "card-2",
