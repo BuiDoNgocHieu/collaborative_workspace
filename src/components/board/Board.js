@@ -54,9 +54,7 @@ const Board = () => {
             </button>{" "}
           </div>
 
-          <div className="board" style={{ fontSize: "25px" }}>
-            <ListGroup />
-          </div>
+          <ListGroup />
         </div>
       </div>
     </div>

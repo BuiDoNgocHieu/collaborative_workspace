@@ -1,5 +1,3 @@
-import "./Board.scss";
-
 const Card = (props) => {
   const { card } = props;
   return (

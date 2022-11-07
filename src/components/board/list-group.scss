@@ -1,56 +1,21 @@
 .board-content {
-    height: 60vh;
-    display: flex;
-    margin: 0 20px 20px;
+    height: 60%;
+    font-size: 25px;
     overflow-x: auto;
     overflow-y: auto;
-    .column {
-        flex: 0 0 auto;
-        width: 300px;
-        height: 100%;
-        overflow-y: hidden;
-        &:not(:first-child) {
-            margin-left: 20px;
-        }
-        >* {
-            background-color: #ebecf0;
-            color: #333;
-            padding: 0 8px;
-        }
-        header {
-            padding-left: 20px;
-            height: 36px;
-            line-height: 36px;
-            font-size: 16px;
-            font-weight: bold;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-        }
-        footer {
-            padding-left: 10px;
-            height: 36px;
-            line-height: 36px;
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-        }
-        ul {
-            list-style-type: none;
-            margin: 0;
-            max-height: calc(100% - 36px - 36px);
-            overflow-y: auto;
-            li {
-                background-color: rgb(236, 234, 230);
-                padding: 10px;
-                border-radius: 2px;
-                &:last-child {
-                    // thuoc tinh nay ko danh cho phan tu cuoi cung
-                    margin-bottom: 10px;
-                }
-                &:not(:last-child) {
-                    // thuoc tinh nay ko danh cho phan tu cuoi cung
-                    margin-bottom: 10px;
-                }
-            }
-        }
+    &::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+    &::-webkit-scrollbar:horizontal {
+        height: 11px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(240, 233, 233, 0.24);
+        border-radius: 8px;
+    }
+    .col-drop-preview {
+        background-color: rgba(150, 150, 200, 0.1);
+        border: 1px dashed #abc;
+        margin: 5px;
     }
 }

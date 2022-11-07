@@ -1,0 +1,70 @@
+.column {
+    flex: 0 0 auto;
+    width: 300px;
+    height: 620px;
+    margin-left: 20px;
+    >* {
+        background-color: #ebecf0;
+        color: #333;
+        padding: 0 8px;
+    }
+    header {
+        padding-left: 20px;
+        height: 36px;
+        line-height: 40px;
+        font-size: 26px;
+        font-weight: bold;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        span {
+            font-size: 20px;
+            color: red;
+        }
+    }
+    footer {
+        padding-left: 10px;
+        height: 36px;
+        line-height: 36px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        cursor: pointer;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        max-height: calc(100% - 36px - 36px);
+        overflow-y: auto;
+        li {
+            background-color: rgb(236, 234, 230);
+            padding: 10px;
+            border-radius: 2px;
+            margin-bottom: 10px;
+            &:last-child {
+                // thuoc tinh nay ko danh cho phan tu cuoi cung
+                margin-bottom: 10px;
+            }
+        }
+    }
+    .column-drag-handle {
+        cursor: pointer;
+    }
+    .col-drop-preview {
+        background-color: rgba(150, 150, 200, 0.1);
+        border: 1px dashed #abc;
+        margin: 5px 45px 5px 5px;
+    }
+    .card-list {
+        cursor: pointer;
+        .card-ghost {
+            transition: transform 0.18s ease;
+            transform: rotateZ(6deg);
+            font-weight: 600;
+            color: #333;
+        }
+        .card-ghost-drop {
+            transition: transform 0.18s ease-in-out;
+            transform: rotateZ(0deg);
+            font-weight: 600;
+        }
+    }
+}
