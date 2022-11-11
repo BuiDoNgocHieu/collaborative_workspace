@@ -1,10 +1,11 @@
 import "./column.scss";
-import { AiOutlinePlus } from "react-icons/ai";
 import { Container, Draggable } from "react-smooth-dnd";
+import { BsThreeDots } from "react-icons/bs";
+import { AiOutlinePlusCircle } from "react-icons/ai";
 
 import Card from "./Card";
 const Column = (props) => {
-  const { column, onCardDrop } = props;
+  const { column, onCardDrop, inputTittle } = props;
   const cards = column.cards;
 
   cards.sort((a, z) => {
@@ -13,9 +14,13 @@ const Column = (props) => {
 
   return (
     <div className="column">
-      <header className="column-drag-handle">
-        {column.tittle} -<span>{column.cards.length} itmes</span>
-      </header>
+      <div className="column-drag-handle">
+        <div className="title-header"> {column.tittle}</div>
+        <div className="option">
+          <span>{column.cards.length}</span>
+          <BsThreeDots />
+        </div>
+      </div>
       <ul className="card-list">
         <Container
           groupName="col"
@@ -40,7 +45,8 @@ const Column = (props) => {
 
       <footer>
         {" "}
-        <AiOutlinePlus
+        <span></span>
+        <AiOutlinePlusCircle
           style={{
             marginRight: "10px",
             marginLeft: "25px",

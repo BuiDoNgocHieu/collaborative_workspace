@@ -13,7 +13,10 @@ import Dropdown from "react-bootstrap/Dropdown";
 
 const Board = () => {
   const [collapsed, setCollapsed] = useState(false);
-
+  const [isOpenCreatColumn, setIsOpenCreatColumn] = useState(false);
+  const handleCreatNewColumn = () => {
+    setIsOpenCreatColumn(!isOpenCreatColumn);
+  };
   return (
     <div className="admin-container">
       <div className="admin-sidebar">
@@ -37,8 +40,8 @@ const Board = () => {
           <Search />
           <div className="line">
             <button type="button" class="btn btn-success button  ">
-              <div>
-                <AiOutlinePlusCircle /> create New backlog
+              <div onClick={() => handleCreatNewColumn()}>
+                <AiOutlinePlusCircle /> create New column
               </div>
             </button>{" "}
             <DropdownButton id="dropdown-basic-button" title="(4)&nbsp;user">
@@ -54,7 +57,13 @@ const Board = () => {
             </button>{" "}
           </div>
 
-          <ListGroup />
+          <div className="board" style={{ fontSize: "25px" }}>
+            <ListGroup
+              show={isOpenCreatColumn}
+              setShow={setIsOpenCreatColumn}
+              handle={handleCreatNewColumn}
+            />
+          </div>
         </div>
       </div>
     </div>

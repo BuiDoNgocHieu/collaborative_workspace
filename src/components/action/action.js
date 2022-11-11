@@ -77,7 +77,7 @@ export const InitialData = {
         {
           id: "column-2",
           boardId: "board-1",
-          tittle: "aaaaa",
+          tittle: "Done",
           cardOder: ["card-7", "card-8", "card-9"],
           cards: [
             {
@@ -103,7 +103,7 @@ export const InitialData = {
         {
           id: "column-3",
           boardId: "board-1",
-          tittle: "bbbb",
+          tittle: "in process",
           cardOder: ["card-10", "card-11", "card-12"],
           cards: [
             {

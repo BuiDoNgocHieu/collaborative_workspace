@@ -8,26 +8,45 @@
         color: #333;
         padding: 0 8px;
     }
-    header {
+    .column-drag-handle {
+        display: flex;
         padding-left: 20px;
-        height: 36px;
-        line-height: 40px;
+        height: 40px;
+        line-height: 30px;
         font-size: 26px;
         font-weight: bold;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
-        span {
-            font-size: 20px;
-            color: red;
+        overflow: hidden;
+        align-items: center;
+        .title-header {
+            flex: 2;
+            overflow: hidden;
+            overflow-x: auto;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            gap: 30px;
+            &:hover {
+                color: rgb(78, 63, 63);
+            }
+            span {
+                line-height: 25px;
+                font-size: 20px;
+                color: red;
+            }
         }
     }
     footer {
         padding-left: 10px;
-        height: 36px;
-        line-height: 36px;
+        height: 32px;
+        line-height: 32px;
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
         cursor: pointer;
+        background-color: greenyellow;
     }
     ul {
         list-style-type: none;
