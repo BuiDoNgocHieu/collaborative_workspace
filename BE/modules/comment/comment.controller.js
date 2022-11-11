@@ -1,16 +1,24 @@
 const CommentModel = require('./comment');
-const jwt = require('jsonwebtoken');
+const TaskModel = require('../Task/task');
 
-require('dotenv').config();
 
 const createComment = async (req, res) => {
     try {
+        // const {existedUser} = req.user;
+        // console.log(existedUser);
+        const {
+            content,
+            taskId,
+            createdBy } = req.body;
 
-        const { name, type } = req.body;
+        const searchTask = await TaskModel.findById(taskId);
+
+        console.log(searchTask);
 
         const newComment = await CommentModel.create({
-            name,
-            type
+            content,
+            taskId,
+            createdBy
         });
 
         res.send({ success: 1, data: newComment });
@@ -47,12 +55,13 @@ const updateComment = async (req, res) => {
 
 const getComments = async (req, res) => {
     try {
-        const comments = await (await CommentModel
-            .find({})
+        const { taskId } = req.query
+        console.log(taskId);
+        const comments = await CommentModel.find({ 'taskId': taskId }
             // .skip(offset)
             // .limit(limit)
         );
-        const totalComment = await CommentModel.countDocuments({});
+        const totalComment = await CommentModel.find({ 'taskId': taskId }).countDocuments({});
         res.send(
             {
                 success: 1,
@@ -69,13 +78,20 @@ const getComments = async (req, res) => {
 const getComment = async (req, res) => {
     try {
         const { commentId } = req.params;
-        const comment = await (await CommentModel
-            .findById(commentId)
-        );
+        const comment = await CommentModel
+            .findById(commentId);
+
+        console.log(comment.task);
+        console.log(comment.taskId.toString());
+        // console.log(TaskModel.findById(comment.taskId));
+
+        const task = await TaskModel.findById(comment.taskId)
+        console.log(task);
         res.send(
             {
                 success: 1,
                 data: comment
+
             });
     } catch (err) {
         res.status(400).send({ success: 0, data: [], message: err.message });

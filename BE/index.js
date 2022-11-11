@@ -6,6 +6,9 @@ const authRouter = require('./modules/auth/auth.router');
 const projectRouter = require('./modules/project/project.router');
 const sprintRouter = require('./modules/Sprint/sprint.router');
 const taskRouter = require('./modules/Task/task.router');
+const commentRouter = require('./modules/comment/comment.router');
+const workspaceRouter = require('./modules/workspace/workspace.router');
+const backlogRouter = require('./modules/backlog/backlog.router');
 
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/Workspace', err => {
@@ -22,6 +25,9 @@ app.use('/api/auth', authRouter);
 app.use('/api/sprint', sprintRouter);
 app.use('/api/project', projectRouter);
 app.use('/api/task', taskRouter);
+app.use('/api/comment', commentRouter);
+app.use('/api/workspace', workspaceRouter);
+app.use('/api/backlog', backlogRouter);
 
 app.use('*', (req, res) => {
   res.send({ message: '404 not found' })

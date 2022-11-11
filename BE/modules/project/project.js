@@ -9,8 +9,9 @@ const ProjectSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    leadId:{
-        type: mongoose.Types.ObjectId
+    lead:{
+        type: mongoose.Types.ObjectId, 
+        ref:"User"
     }
 },
     {
