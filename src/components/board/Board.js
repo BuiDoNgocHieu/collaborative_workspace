@@ -10,13 +10,17 @@ import { Link } from "react-router-dom";
 import { IoIosPersonAdd } from "react-icons/io";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
+import axios from "axios";
+import { useEffect } from "react";
 
 const Board = () => {
   const [collapsed, setCollapsed] = useState(false);
+
   const [isOpenCreatColumn, setIsOpenCreatColumn] = useState(false);
   const handleCreatNewColumn = () => {
     setIsOpenCreatColumn(!isOpenCreatColumn);
   };
+
   return (
     <div className="admin-container">
       <div className="admin-sidebar">

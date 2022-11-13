@@ -11,8 +11,11 @@ import Backlog from "./components/backlog/backlog";
 import Homepage from "./components/Home/homepage";
 import Login from "../src/components/Auth/login";
 import Register from "../src/components/Auth/register";
+import Listuser from "../src/components/listuser";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PrivateRouter from "../src/components/routes/PrivateRouter";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,10 +25,18 @@ root.render(
       <Routes>
         {/* nested router */}
         <Route path="/" element={<App />}>
-          <Route index element={<Homepage />} />
+          <Route
+            index
+            element={
+              <PrivateRouter>
+                <Homepage />{" "}
+              </PrivateRouter>
+            }
+          />
         </Route>
         <Route path="Board" element={<Board />} />
         <Route path="Backlog" element={<Backlog />} />
+        <Route path="/listuser" element={<Listuser />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
