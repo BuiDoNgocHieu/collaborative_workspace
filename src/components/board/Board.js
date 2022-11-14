@@ -43,7 +43,7 @@ const Board = () => {
           <div className="name"> Project backlog - Board name </div>
           <Search />
           <div className="line">
-            <button type="button" class="btn btn-success button  ">
+            <button type="button" className="btn btn-success button  ">
               <div onClick={() => handleCreatNewColumn()}>
                 <AiOutlinePlusCircle /> create New column
               </div>

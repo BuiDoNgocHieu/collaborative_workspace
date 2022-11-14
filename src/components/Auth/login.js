@@ -22,7 +22,7 @@ const Login = (props) => {
     }
 
     if (!password) {
-      toast.error("palease enter password");
+      toast.error("please enter password");
     }
     let res = await axios.post("http://localhost:6061/api/auth/login", {
       username,
@@ -39,7 +39,7 @@ const Login = (props) => {
       navigate("/");
       console.log(res);
     }
-    if (res && res.data.success !== 1) {
+    if (res && res.data.success === 0) {
       toast.error("password wrong , please try again");
     }
   };

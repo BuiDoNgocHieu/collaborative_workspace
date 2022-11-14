@@ -12,7 +12,7 @@ import Homepage from "./components/Home/homepage";
 import Login from "../src/components/Auth/login";
 import Register from "../src/components/Auth/register";
 import Listuser from "../src/components/listuser";
-
+import Workspaces from "./components/workspace/workspaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PrivateRouter from "../src/components/routes/PrivateRouter";
@@ -36,7 +36,9 @@ root.render(
         </Route>
         <Route path="Board" element={<Board />} />
         <Route path="Backlog" element={<Backlog />} />
+
         <Route path="/listuser" element={<Listuser />} />
+        <Route path="workspace" element={<Workspaces />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
