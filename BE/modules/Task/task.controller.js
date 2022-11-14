@@ -33,7 +33,7 @@ const createTask = async (req, res) => {
         // console.log(token);
         // const senderUser = req.user
 
-        const { title, description, status, assignee, reporter, startTime, endTime } = req.body;
+        const { title, description, status, assignee, reporter, startTime, endTime, projectID } = req.body;
 
         const newTask = await TaskModel.create({
             title,
@@ -42,7 +42,9 @@ const createTask = async (req, res) => {
             assignee,
             reporter,
             startTime,
-            endTime
+            endTime,
+            projectID
+
 
             //   createdBy: existedUser._id,
         });

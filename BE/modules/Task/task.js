@@ -11,13 +11,16 @@ const TaskSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        require: true
+        default: "in progress"
     },
-    backlogID: {
-        type: mongoose.Types.ObjectId,
-        require: true
-    },
-    sprintID: {
+    // backlogID: {
+    //     type: mongoose.Types.ObjectId,
+    //     require: true
+    // },
+    // sprintID: {
+    //     type: mongoose.Types.ObjectId
+    // },
+    projectID: {
         type: mongoose.Types.ObjectId
     },
     assignee: {
@@ -34,7 +37,7 @@ const TaskSchema = new mongoose.Schema({
     },
     endTime: {
         type: Date,
-        require: true
+
     },
 
 },

@@ -70,9 +70,10 @@ const login = async (req, res) => {
       expiresIn: 60 * 60 * 24
     })
 
+
     res.send({
       success: 1,
-      data: { _id: userId, token }
+      data: { _id: userId, token, username }
     });
     // console.log(process.env.SECRET_KEY);
 

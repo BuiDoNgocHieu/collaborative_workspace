@@ -38,7 +38,7 @@ app.use((err,req,res,next)=>{
   res.status.send({success:0,message:err.message})
 })
 
-app.listen(process.env.PORT || 6060, (err) => {
+app.listen(process.env.PORT || 9090, (err) => {
   if (err) {
     return console.log('Server Error', err);
   }
