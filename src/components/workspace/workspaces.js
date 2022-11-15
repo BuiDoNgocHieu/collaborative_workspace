@@ -4,28 +4,43 @@ import axios from "axios";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import { AiFillEdit } from "react-icons/ai";
-
-import { Link } from "react-router-dom";
+import Delete from "../workspace/form-delete-workspace";
+import { Link, useNavigate } from "react-router-dom";
 import Example from "./form-creat-new-workspace";
 import UpdateWorkspace from "../workspace/form-update-new-workspace";
+import { useParams } from "react-router-dom";
+import WorkspaceDetails from "../workspace/detailsworkspace/Details";
 
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 const Workspace = (props) => {
+  const navigate = useNavigate();
   const [Workspace, setWorkspace] = useState([]);
   const [show, setShow] = useState(false);
   const [showModalUpdateWorkspace, setshowModalUpdateWorkspace] =
     useState(false);
+
+  const [showModalDeleteWorkspace, setShowModalDeleteWorkspace] =
+    useState(false);
   const [dataUpdate, setDataUpdate] = useState({});
+  const [dataDelete, setDataDelete] = useState({});
+  const [viewWorkspace, setviewWorkspace] = useState({});
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleUpdateWorkspace = (workspace) => {
     setshowModalUpdateWorkspace(!showModalUpdateWorkspace);
     setDataUpdate(workspace);
-    console.log(workspace);
+    // console.log(workspace);/
   };
-
+  const handleDeleteWorkspace = (user) => {
+    setShowModalDeleteWorkspace(!showModalDeleteWorkspace);
+    setDataDelete(user);
+    console.log(user);
+  };
+  // const viewWorkspaceDetails = (user) => {
+  //   navigate(`/workspacedetails/${user._id}`);
+  // };
   const [listWorkspace, setListWorkspace] = useState("");
 
   const fetchData = async () => {
@@ -105,6 +120,11 @@ const Workspace = (props) => {
                         <Button
                           variant="primary"
                           style={{ marginRight: "30px" }}
+                          onClick={() =>
+                            navigate(`/workspacedetails/${item._id}`, {
+                              state: { nameWorkSpace: item.name },
+                            })
+                          }
                         >
                           View details{" "}
                         </Button>
@@ -115,6 +135,7 @@ const Workspace = (props) => {
                             color: "red",
                             fontSize: "20px",
                           }}
+                          onClick={() => handleDeleteWorkspace(item)}
                         >
                           <MdDelete />{" "}
                         </Button>
@@ -144,6 +165,12 @@ const Workspace = (props) => {
         HandleShowUpdate={showModalUpdateWorkspace}
         setHandleShowUpdate={handleUpdateWorkspace}
         Update={dataUpdate}
+        fetchData={fetchData}
+      />
+      <Delete
+        HandleShowDelete={showModalDeleteWorkspace}
+        setHandleShowDelete={handleDeleteWorkspace}
+        dataDelete={dataDelete}
         fetchData={fetchData}
       />
     </div>

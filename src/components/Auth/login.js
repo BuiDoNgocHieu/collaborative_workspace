@@ -5,13 +5,16 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
+import { ImSpinner3 } from "react-icons/im";
+import NProgress from "nprogress";
+NProgress.start();
+NProgress.done();
 const Login = (props) => {
   const [username, setName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const [loading, setLoading] = useState(false);
   const handleClose = () => {
     setName("");
     setPassword("");
@@ -24,6 +27,9 @@ const Login = (props) => {
     if (!password) {
       toast.error("please enter password");
     }
+    setLoading(true);
+    NProgress.start();
+
     let res = await axios.post("http://localhost:6061/api/auth/login", {
       username,
       password,
@@ -34,13 +40,17 @@ const Login = (props) => {
         type: "FETCH_USER_LOGIN_SUCCES",
         payload: res,
       });
+      NProgress.done();
+
       toast.success("login success");
       handleClose();
+      setLoading(false);
       navigate("/");
       console.log(res);
     }
     if (res && res.data.success === 0) {
       toast.error("password wrong , please try again");
+      setLoading(false);
     }
   };
 
@@ -80,8 +90,10 @@ const Login = (props) => {
             type="button"
             className="btn btn-success submit"
             onClick={() => handleLogin()}
+            disabled={loading === true}
           >
-            Login
+            {loading === true && <ImSpinner3 className="loaderIcon" />}
+            <span>Login</span>
           </button>
         </div>
         <div>

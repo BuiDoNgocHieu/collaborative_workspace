@@ -32,7 +32,7 @@ const Listuser = () => {
             {" "}
             List user
           </h1>
-          <table class="table">
+          <table class="table" style={{}}>
             <thead class="thead-dark">
               <tr>
                 <th scope="col">No</th>

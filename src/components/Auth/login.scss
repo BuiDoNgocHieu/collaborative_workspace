@@ -74,6 +74,25 @@
             font-size: 14px;
             border-radius: 8px;
             cursor: pointer;
+            &:disabled {
+                background-color: #636d77;
+                color: #f1f1f1;
+                cursor: no-drop;
+            }
+            .loaderIcon {
+                margin-right: 7px;
+                top: 2px;
+                animation: spin 1s infinite linear;
+                font-size: 20px;
+            }
+            @keyframes spin {
+                from {
+                    transform: scale(1) rotate(0deg);
+                }
+                to {
+                    transform: scale(1) rotate(360deg);
+                }
+            }
         }
     }
 }

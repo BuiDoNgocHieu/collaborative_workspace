@@ -3,25 +3,28 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useParams, useLocation } from "react-router-dom";
+
 function Example(props) {
-  const { view, handleCloseView, fetchData } = props;
+  const { show, handleShow, dataParam } = props;
+  const params = useParams();
+  const workspaceId = params._id;
 
   const [name, setName] = useState("");
   const [createBy, setCreateBy] = useState("");
 
   const [type, setType] = useState("Choose");
-
-  const handleCreatWorkSpace = async () => {
+  const handleCreatProject = async () => {
     let data = {
       name: name,
       type: type,
     };
-    console.log(data);
 
     let res = await axios.post(
-      "http://localhost:6061/api/workspace/create",
+      `http://localhost:6061/api/workspace/create`,
       data
     );
+    console.log(res);
     if (!name) {
       toast.error("please enter name");
       return;
@@ -29,11 +32,11 @@ function Example(props) {
 
     if (res && res.data.success === 1) {
       console.log("res", res);
-      toast.success("create new workspace success");
+      toast.success("create new project success");
       setName("");
       setType("");
-      handleCloseView();
-      await fetchData();
+      handleShow();
+      await dataParam();
     }
 
     if (res && res.data.success === 0) {
@@ -43,7 +46,7 @@ function Example(props) {
   };
   return (
     <>
-      <Modal show={view} onHide={handleCloseView} size="l">
+      <Modal show={show} onHide={handleShow} size="l">
         <Modal.Header closeButton>
           <Modal.Title>New Workspace</Modal.Title>
         </Modal.Header>
@@ -73,27 +76,20 @@ function Example(props) {
                 value={type}
                 onChange={(event) => setType(event.target.value)}
               >
-                <option>Choose</option>
-                <option>Sales</option>
-                <option>Operations</option>
-                <option>legal</option>
-                <option>Human Resources</option>
-                <option>Maketing</option>
-                <option>Customer Service</option>
-                <option>Finsnce</option>
-                <option>It support</option>
-                <option>Software Development</option>
-                <option>Other</option>
+                <option>Team-managed</option>
+                <option>Company-managed</option>
+                <option>Essential features</option>
+                <option>Advanced features</option>
               </select>
             </div>
             <div className="col-md-12"></div>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseView}>
+          <Button variant="secondary" onClick={handleShow}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleCreatWorkSpace}>
+          <Button variant="primary" onClick={handleCreatProject}>
             Save Changes
           </Button>
         </Modal.Footer>
@@ -101,4 +97,5 @@ function Example(props) {
     </>
   );
 }
+
 export default Example;

@@ -30,7 +30,7 @@ function UpdateWorkspace(props) {
     );
     if (res && res.data.success === 1) {
       console.log("res", res);
-      toast.success("create new workspace success");
+      toast.success("update new workspace success");
       setName("");
       setType("");
       setHandleShowUpdate();

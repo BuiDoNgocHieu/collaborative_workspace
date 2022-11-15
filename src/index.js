@@ -13,10 +13,29 @@ import Login from "../src/components/Auth/login";
 import Register from "../src/components/Auth/register";
 import Listuser from "../src/components/listuser";
 import Workspaces from "./components/workspace/workspaces";
+import WorkspaceDetails from "./components/workspace/detailsworkspace/Details";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PrivateRouter from "../src/components/routes/PrivateRouter";
+import "nprogress/nprogress.css";
 
+const NotFound = () => {
+  return (
+    <div
+      class="alert alert-danger"
+      role="alert"
+      style={{
+        fontSize: "40px",
+        marginTop: "200px",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      Not Found 404
+    </div>
+  );
+};
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
@@ -33,14 +52,16 @@ root.render(
               </PrivateRouter>
             }
           />
+          <Route path="workspace" element={<Workspaces />} />
+          <Route path="workspacedetails/:id" element={<WorkspaceDetails />} />
         </Route>
         <Route path="Board" element={<Board />} />
         <Route path="Backlog" element={<Backlog />} />
 
         <Route path="/listuser" element={<Listuser />} />
-        <Route path="workspace" element={<Workspaces />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
     {/* </React.StrictMode> */}

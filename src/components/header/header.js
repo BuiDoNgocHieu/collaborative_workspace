@@ -54,7 +54,7 @@ const Header = () => {
                 </button>
               </>
             ) : (
-              <div> wei come</div>
+              <div>Hi ,{account.usename} </div>
             )}
 
             {/* <NavDropdown title="Setting" id="basic-nav-dropdown">
