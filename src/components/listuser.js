@@ -3,6 +3,8 @@ import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import Sidebar from "../components/backlog/sidebar";
 import axios from "axios";
+import "./Listuser.scss";
+
 const Listuser = () => {
   const [list, setList] = useState("");
   const [collapsed, setCollapsed] = useState(false);

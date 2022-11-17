@@ -14,7 +14,6 @@ import Register from "../src/components/Auth/register";
 import Listuser from "../src/components/listuser";
 import Workspaces from "./components/workspace/workspaces";
 import WorkspaceDetails from "./components/workspace/detailsworkspace/Details";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PrivateRouter from "../src/components/routes/PrivateRouter";
@@ -53,6 +52,8 @@ root.render(
             }
           />
           <Route path="workspace" element={<Workspaces />} />
+          <Route path="Profile" element={<WorkspaceDetails />} />
+
           <Route path="workspacedetails/:id" element={<WorkspaceDetails />} />
         </Route>
         <Route path="Board" element={<Board />} />

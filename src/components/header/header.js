@@ -4,18 +4,26 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Example from "../header/profile-modal";
+import React, { useState } from "react";
 const Header = () => {
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const [profile, setProfile] = useState();
+  const islogin = useSelector((state) => state.user.islogin);
+  const account = useSelector((state) => state.user.account);
+  const handleShowProfile = (username) => {
+    setShow(!show);
+    setProfile(account);
+  };
   const handleLogin = () => {
     navigate("/Login");
   };
   const handleRegister = () => {
     navigate("/register");
   };
-  const islogin = useSelector((state) => state.user.islogin);
-  const account = useSelector((state) => state.user.account);
 
-  console.log("islogin", islogin, "account", account);
+  // console.log("islogin", islogin, "account", account);
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -54,17 +62,24 @@ const Header = () => {
                 </button>
               </>
             ) : (
-              <div>Hi ,{account.usename} </div>
+              <NavDropdown
+                title={`hi , ${account.username}`}
+                id="basic-nav-dropdown"
+              >
+                <NavDropdown.Item onClick={() => handleShowProfile(account)}>
+                  Profile
+                </NavDropdown.Item>
+                <NavDropdown.Item>Log Out</NavDropdown.Item>
+              </NavDropdown>
             )}
-
-            {/* <NavDropdown title="Setting" id="basic-nav-dropdown">
-               <NavDropdown.Item href="#action/3.1">Log In</NavDropdown.Item> 
-              <NavDropdown.Item>Profile</NavDropdown.Item>
-              <NavDropdown.Item>Log Out</NavDropdown.Item>
-            </NavDropdown> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
+      <Example
+        show={show}
+        handleShowProfile={handleShowProfile}
+        profile={profile}
+      />
     </Navbar>
   );
 };

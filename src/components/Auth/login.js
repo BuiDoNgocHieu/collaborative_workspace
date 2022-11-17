@@ -34,7 +34,7 @@ const Login = (props) => {
       username,
       password,
     });
-    console.log("res ", res);
+    // console.log("res ", res);
     if (res && res.data.success === 1) {
       dispatch({
         type: "FETCH_USER_LOGIN_SUCCES",
@@ -46,7 +46,7 @@ const Login = (props) => {
       handleClose();
       setLoading(false);
       navigate("/");
-      console.log(res);
+      // console.log(res);
     }
     if (res && res.data.success === 0) {
       toast.error("password wrong , please try again");
@@ -92,8 +92,9 @@ const Login = (props) => {
             onClick={() => handleLogin()}
             disabled={loading === true}
           >
-            {loading === true && <ImSpinner3 className="loaderIcon" />}
+            {loading === true && <ImSpinner3 className="loaderIcon" />}{" "}
             <span>Login</span>
+            {loading === false && <span>Login</span>}
           </button>
         </div>
         <div>
