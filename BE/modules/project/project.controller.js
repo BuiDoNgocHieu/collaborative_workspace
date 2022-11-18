@@ -5,39 +5,14 @@ require('dotenv').config();
 
 const createProject = async (req, res) => {
     try {
-        //     const token = req.headers.authorization;
 
-        // if (!token) {
-        //   throw new Error('Not found token');
-        // }
-
-        // // const jwtToken = token.split(' ')[1];
-        // // check token có thuộc token của dự án mình ko
-        // // check token có hết hạn hay ko
-        // // trả về payload
-
-        // const data = jwt.verify(token, process.env.SECRET_KEY);
-
-        // const { userId } = data;
-        // if (!userId) {
-        //   throw new Error('Authorization fail');
-        // }
-        // console.log(data);
-
-        // const existedUser = await UserModel.findById(userId);
-
-        // if (!existedUser) {
-        //   throw new Error('Authorization fail');
-        // }
-
-        // console.log(token);
-        // const senderUser = req.user
-
-        const { name, type } = req.body;
+        const { name, type, workspaceId, lead } = req.body;
 
         const newProject = await ProjectModel.create({
             name,
-            type
+            type,
+            workspaceId,
+            lead
         });
 
         res.send({ success: 1, data: newProject });
@@ -74,12 +49,15 @@ const updateProject = async (req, res) => {
 
 const getProjects = async (req, res) => {
     try {
+        const { workspaceId } = req.query
+
+
         const projects = await (await ProjectModel
-            .find({})
+            .find({ 'workspaceId': workspaceId })
             // .skip(offset)
             // .limit(limit)
         );
-        const totalProject = await ProjectModel.countDocuments({});
+        const totalProject = await ProjectModel.find({ 'workspaceId': workspaceId }).countDocuments({});
         res.send(
             {
                 success: 1,

@@ -11,7 +11,13 @@ const ProjectSchema = new mongoose.Schema({
     },
     lead:{
         type: mongoose.Types.ObjectId, 
-        ref:"User"
+        ref:"User",
+        require: true
+    },
+    workspaceId: {
+        type: mongoose.Types.ObjectId,
+        ref: "Workspace",
+        require:true 
     }
 },
     {
