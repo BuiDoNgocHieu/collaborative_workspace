@@ -9,7 +9,7 @@ function Delete(props) {
     props;
   const handleDeleteWorkSpace = async (userId) => {
     let res = await axios.delete(
-      `http://localhost:9091/api/workspace/${dataDelete._id} `
+      `http://localhost:9090/api/workspace/${dataDelete._id} `
     );
     if (res && res.data.success === 1) {
       console.log("res", res);

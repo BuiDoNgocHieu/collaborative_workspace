@@ -50,10 +50,8 @@ const Listuser = () => {
                 list.data.length > 0 &&
                 list.data.map((item, index) => {
                   return (
-                    <tr>
-                      <th scope="row" key={index}>
-                        {index + 1}
-                      </th>
+                    <tr key={index}>
+                      <th scope="row">{index + 1}</th>
 
                       <td>{item.username}</td>
                       <td>{item.password}</td>

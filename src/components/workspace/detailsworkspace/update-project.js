@@ -1,53 +1,56 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useEffect } from "react";
+// import { useParams, useLocation } from "react-router-dom";
 import _ from "lodash";
-function UpdateWorkspace(props) {
-  const { HandleShowUpdate, setHandleShowUpdate, Update, fetchData } = props;
-  //   console.log(dataUpdate);
+
+const UpdateProject = (props) => {
+  const { showUpdateModal, handleShowUpdateModal, dataParam, update } = props;
+  //   const islogin = useSelector((state) => state.user.islogin);
+  //   const account = useSelector((state) => state.user.account);
+  // console.log("dataUpdate", dataUpdate);
+
   const [name, setName] = useState("");
+  const [type, setType] = useState("Choose");
   const [id, setId] = useState("");
 
-  const [type, setType] = useState("Choose");
   useEffect(() => {
-    if (!_.isEmpty(Update)) {
-      setName(Update.name);
-      setType(Update.type);
-      setId(Update._id);
+    if (!_.isEmpty(update)) {
+      setName(update.name);
+      setType(update.type);
+      setId(update._id);
     }
-  }, [Update]);
-  console.log("Update", Update);
-  const handleUpdateWorkSpace = async () => {
+  }, [update]);
+  const handleUpdateProject = async () => {
     let data = {
       name: name,
       type: type,
     };
-    let res = await axios.put(
-      `http://localhost:9090/api/workspace/${id}`,
+    let adddd = await axios.put(
+      `http://localhost:9090/api/project/${id}`,
       data
     );
-    console.log(res);
-    if (res && res.data.success === 1) {
-      console.log("res", res);
-      toast.success("update new workspace success");
+    if (adddd && adddd.data.success === 1) {
+      console.log("res", adddd);
+
+      toast.success("update project success");
       setName("");
       setType("");
-      setHandleShowUpdate();
-      await fetchData();
+      handleShowUpdateModal();
+      await dataParam();
     }
-    if (res && res.data.success === 0) {
-      toast.error(res.data.message);
+    if (adddd && adddd.data.success === 0) {
+      toast.error(adddd.data.message);
       return;
     }
   };
   return (
     <>
-      <Modal show={HandleShowUpdate} onHide={setHandleShowUpdate} size="l">
+      <Modal show={showUpdateModal} onHide={handleShowUpdateModal} size="l">
         <Modal.Header closeButton>
-          <Modal.Title>Update Workspace</Modal.Title>
+          <Modal.Title>update Project</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="row g-3">
@@ -72,7 +75,7 @@ function UpdateWorkspace(props) {
                 className="form-control"
                 id="inputEmail4"
                 value={id}
-                onChange={(event) => setId(event.target.value)}
+                // onChange={(event) => setId(event.target.value)}
                 disabled
               />
             </div>
@@ -88,31 +91,26 @@ function UpdateWorkspace(props) {
                 onChange={(event) => setType(event.target.value)}
               >
                 <option>Choose</option>
-                <option>Sales</option>
-                <option>Operations</option>
-                <option>legal</option>
-                <option>Human Resources</option>
-                <option>Maketing</option>
-                <option>Customer Service</option>
-                <option>Finsnce</option>
-                <option>It support</option>
-                <option>Software Development</option>
-                <option>Other</option>
+                <option>Kanban software development</option>
+                <option>Basic software development</option>
+                <option>Task management</option>
+                <option>Project management</option>
+                <option>Process management</option>
               </select>
             </div>
             <div className="col-md-12"></div>
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={setHandleShowUpdate}>
+          <Button variant="secondary" onClick={handleShowUpdateModal}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleUpdateWorkSpace}>
+          <Button variant="primary" onClick={handleUpdateProject}>
             Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
     </>
   );
-}
-export default UpdateWorkspace;
+};
+export default UpdateProject;

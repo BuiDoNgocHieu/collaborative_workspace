@@ -30,7 +30,7 @@ const Login = (props) => {
     setLoading(true);
     NProgress.start();
 
-    let res = await axios.post("http://localhost:9091/api/auth/login", {
+    let res = await axios.post("http://localhost:9090/api/auth/login", {
       username,
       password,
     });

@@ -28,7 +28,7 @@ function Example(props) {
     console.log(data);
 
     let res = await axios.post(
-      `http://localhost:9091/api/project/create`,
+      `http://localhost:9090/api/project/create`,
       data
     );
     if (!name) {
@@ -82,16 +82,11 @@ function Example(props) {
                 onChange={(event) => setType(event.target.value)}
               >
                 <option>Choose</option>
-                <option>Sales</option>
-                <option>Operations</option>
-                <option>legal</option>
-                <option>Human Resources</option>
-                <option>Maketing</option>
-                <option>Customer Service</option>
-                <option>Finsnce</option>
-                <option>It support</option>
-                <option>Software Development</option>
-                <option>Other</option>
+                <option>Kanban software development</option>
+                <option>Basic software development</option>
+                <option>Task management</option>
+                <option>Project management</option>
+                <option>Process management</option>
               </select>
             </div>
             <div className="col-md-12"></div>

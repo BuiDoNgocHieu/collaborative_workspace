@@ -44,7 +44,7 @@ const Workspace = (props) => {
   const [listWorkspace, setListWorkspace] = useState("");
 
   const fetchData = async () => {
-    let res = await axios.get("http://localhost:9091/api/workspace/");
+    let res = await axios.get("http://localhost:9090/api/workspace/");
     if (res && res.data && res.data.success === 1) {
       setListWorkspace(res.data);
       // console.log(listWorkspace);

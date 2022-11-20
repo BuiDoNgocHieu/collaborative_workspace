@@ -12,10 +12,12 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import axios from "axios";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Board = () => {
   const [collapsed, setCollapsed] = useState(false);
-
+  const islogin = useSelector((state) => state.user.islogin);
+  const account = useSelector((state) => state.user.account);
   const [isOpenCreatColumn, setIsOpenCreatColumn] = useState(false);
   const handleCreatNewColumn = () => {
     setIsOpenCreatColumn(!isOpenCreatColumn);
@@ -33,14 +35,26 @@ const Board = () => {
         />
         <div className="admin-main">
           <div className="title">
-            {" "}
             <div className="name"> Project backlog - Board name </div>
-            <span>
-              <FaUser className="icon" />
-              <Link to="/login">Login</Link>{" "}
-            </span>
+            {islogin === true ? (
+              <>
+                <b
+                  style={{ marginRight: "50px" }}
+                >{`Hi , ${account.username}`}</b>{" "}
+              </>
+            ) : (
+              <>
+                {" "}
+                <span>
+                  {" "}
+                  <FaUser className="icon" />
+                  <Link to="/login">Login</Link>{" "}
+                </span>{" "}
+              </>
+            )}
           </div>
           <Search />
+
           <div className="line">
             <button type="button" className="btn btn-success button  ">
               <div onClick={() => handleCreatNewColumn()}>
