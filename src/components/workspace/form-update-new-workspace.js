@@ -25,7 +25,7 @@ function UpdateWorkspace(props) {
       type: type,
     };
     let res = await axios.put(
-      `http://localhost:6061/api/workspace/${id}`,
+      `http://localhost:9091/api/workspace/${id}`,
       data
     );
     if (res && res.data.success === 1) {

@@ -39,12 +39,12 @@ const Header = () => {
               {" "}
               Home
             </NavLink>
-            <NavLink to="/Board" className="nav-link">
-              Board{" "}
+            <NavLink to="/workspace" className="nav-link">
+              Workspace{" "}
             </NavLink>
-            <NavLink to="/Backlog" className="nav-link">
+            {/* <NavLink to="/Backlog" className="nav-link">
               Backlog
-            </NavLink>
+            </NavLink> */}
             <NavLink to="/listuser" className="nav-link">
               List User
             </NavLink>

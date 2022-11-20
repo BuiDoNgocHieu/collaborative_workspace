@@ -41,7 +41,7 @@ const Register = (props) => {
       toast.error("password enter pass ");
       return;
     }
-    let res = await axios.post("http://localhost:6061/api/auth/register", {
+    let res = await axios.post("http://localhost:9091/api/auth/register", {
       name,
       username,
       password,

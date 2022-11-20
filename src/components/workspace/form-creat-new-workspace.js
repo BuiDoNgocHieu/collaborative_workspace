@@ -19,14 +19,13 @@ function Example(props) {
     console.log(data);
 
     let res = await axios.post(
-      "http://localhost:6061/api/workspace/create",
+      "http://localhost:9091/api/workspace/create",
       data
     );
     if (!name) {
       toast.error("please enter name");
       return;
     }
-
     if (res && res.data.success === 1) {
       console.log("res", res);
       toast.success("create new workspace success");

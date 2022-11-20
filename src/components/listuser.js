@@ -10,15 +10,16 @@ const Listuser = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   const fetchData = async () => {
-    let res = await axios.get("http://localhost:6061/api/auth/seeusers");
+    let res = await axios.get("http://localhost:9091/api/auth/seeusers");
     if (res && res.data && res.data.success === 1) {
       setList(res.data);
-      console.log(list);
     }
   };
   useEffect(() => {
     fetchData();
   }, []);
+  console.log(list);
+
   return (
     <div className="admin-container">
       <div className="admin-sidebar">
@@ -50,7 +51,9 @@ const Listuser = () => {
                 list.data.map((item, index) => {
                   return (
                     <tr>
-                      <th scope="row">{index + 1}</th>
+                      <th scope="row" key={index}>
+                        {index + 1}
+                      </th>
 
                       <td>{item.username}</td>
                       <td>{item.password}</td>

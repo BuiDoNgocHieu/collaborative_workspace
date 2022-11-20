@@ -2,6 +2,8 @@ import "./column.scss";
 import { Container, Draggable } from "react-smooth-dnd";
 import { BsThreeDots } from "react-icons/bs";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/Dropdown";
 
 import Card from "./Card";
 const Column = (props) => {
@@ -16,11 +18,22 @@ const Column = (props) => {
     <div className="column">
       <div className="column-drag-handle">
         <div className="title-header"> {column.tittle}</div>
-        <div className="option">
-          <span>{column.cards.length}</span>
-          <BsThreeDots />
-        </div>
       </div>
+
+      <div className="option">
+        <Dropdown>
+          <Dropdown.Toggle variant="success" id="dropdown-basic">
+            Dropdown Button
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </div>
+
       <ul className="card-list">
         <Container
           groupName="col"

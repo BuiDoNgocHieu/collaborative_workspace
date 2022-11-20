@@ -18,6 +18,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
           id: action?.payload?.data?.data?._id,
           token: action?.payload?.data?.data?.token,
           username: action?.payload?.data?.data?.username,
+
           //   name: action.payload.data.data.id,
           //   createdAt: action.payload.data.data.id,
         },

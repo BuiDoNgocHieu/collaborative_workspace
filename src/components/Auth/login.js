@@ -30,7 +30,7 @@ const Login = (props) => {
     setLoading(true);
     NProgress.start();
 
-    let res = await axios.post("http://localhost:6061/api/auth/login", {
+    let res = await axios.post("http://localhost:9091/api/auth/login", {
       username,
       password,
     });
@@ -90,10 +90,13 @@ const Login = (props) => {
             type="button"
             className="btn btn-success submit"
             onClick={() => handleLogin()}
-            disabled={loading === true}
           >
-            {loading === true && <ImSpinner3 className="loaderIcon" />}{" "}
-            <span>Login</span>
+            {loading === true && (
+              <span>
+                <ImSpinner3 className="loaderIcon" />
+                Login
+              </span>
+            )}{" "}
             {loading === false && <span>Login</span>}
           </button>
         </div>

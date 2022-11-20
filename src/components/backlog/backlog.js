@@ -5,12 +5,16 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { FaUser } from "react-icons/fa";
 import Search from "../search";
 import { Link } from "react-router-dom";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TableProject from "./tableProject";
+import axios from "axios";
 
 const Admin = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const [show, setShow] = useState(false);
+  const handleShow = () => {
+    setShow(!show);
+  };
 
   return (
     <div className="admin-container">
@@ -32,12 +36,12 @@ const Admin = () => {
             </span>
           </div>
           <div className="name"> Project backlog</div>
-          <Search />
-
-          <button type="button" class="btn btn-success button">
-            <AiOutlinePlusCircle /> create New Project
-          </button>
-
+          <div className="heade-up">
+            <h2> Your work</h2>
+            <button className="btn btn-success" onClick={handleShow}>
+              <AiOutlinePlusCircle /> create New Project
+            </button>
+          </div>
           <TableProject />
         </div>
       </div>

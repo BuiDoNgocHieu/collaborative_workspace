@@ -15,7 +15,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 const Workspace = (props) => {
   const navigate = useNavigate();
-  const [Workspace, setWorkspace] = useState([]);
+  // const [Workspace, setWorkspace] = useState([]);
   const [show, setShow] = useState(false);
   const [showModalUpdateWorkspace, setshowModalUpdateWorkspace] =
     useState(false);
@@ -24,7 +24,7 @@ const Workspace = (props) => {
     useState(false);
   const [dataUpdate, setDataUpdate] = useState({});
   const [dataDelete, setDataDelete] = useState({});
-  const [viewWorkspace, setviewWorkspace] = useState({});
+  // const [viewWorkspace, setviewWorkspace] = useState({});
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -44,7 +44,7 @@ const Workspace = (props) => {
   const [listWorkspace, setListWorkspace] = useState("");
 
   const fetchData = async () => {
-    let res = await axios.get("http://localhost:6061/api/workspace/");
+    let res = await axios.get("http://localhost:9091/api/workspace/");
     if (res && res.data && res.data.success === 1) {
       setListWorkspace(res.data);
       // console.log(listWorkspace);
@@ -121,7 +121,7 @@ const Workspace = (props) => {
                           variant="primary"
                           style={{ marginRight: "30px" }}
                           onClick={() =>
-                            navigate(`/workspacedetails/${item._id}`, {
+                            navigate(`workspacedetails/${item._id}`, {
                               state: { nameWorkSpace: item.name },
                             })
                           }

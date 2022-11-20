@@ -69,7 +69,7 @@ const Sidebar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
             <MenuItem icon={<FiSettings />}>
               {" "}
               {/* {intl.formatMessage({ id: "components" })} */}
-              <Link to="/Backlog">Backlog</Link>{" "}
+              {/* <Link to="/Backlog">Backlog</Link>{" "} */}
             </MenuItem>
 
             <hr />

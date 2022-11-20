@@ -4,7 +4,7 @@ import axios from "axios";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import "./Details.scss";
 import { useState } from "react";
-import Example from "../detailsworkspace/form-creat-project";
+import Example from "./create-project";
 const WorkspaceDetails = (props) => {
   const params = useParams();
   const location = useLocation();
@@ -12,22 +12,20 @@ const WorkspaceDetails = (props) => {
   const handleShow = () => {
     setShow(!show);
   };
-  const workspaceId = params._id;
-
-  const [project, setProject] = useState({});
-  console.log(location);
-  let dataParam = async (workspaceId) => {
-    let res = await axios.get(
-      `http://localhost:6061/api/workspace/${workspaceId} `
+  const workspaceId = params.id;
+  console.log(workspaceId);
+  const [project, setProject] = useState([]);
+  const abc = async () => {
+    let data = await axios.get(
+      `http://localhost:9091/api/project?workspaceId=${workspaceId}`
     );
-    console.log("check:", res);
-    setProject(res.data);
+    console.log(data);
+    setProject(data.data);
   };
   useEffect(() => {
-    dataParam();
+    abc();
   }, [workspaceId]);
 
-  console.log("setProject", project);
   return (
     <div className="detail-workspace container">
       <div className="header">
@@ -39,21 +37,32 @@ const WorkspaceDetails = (props) => {
           </button>
         </div>
         <div className="heade-down mt-5">
-          <div
-            class="card text-white bg-dark mb-3"
-            style={{ maxWidth: "18rem" }}
-          >
-            <div class="card-header">team-2</div>
-            <div class="card-body">
-              <h5 class="card-title">Type : team-manage Software</h5>
-              <p class="card-text">Board : 1</p>
-              <p class="card-text"> Task : 5</p>
-              <p class="card-text"> Done : </p>
-            </div>
-          </div>
-        </div>
+          {project?.data?.projects &&
+            project?.data?.projects?.length > 0 &&
+            project?.data?.projects.map((item, index) => {
+              return (
+                <div
+                  class="card text-white bg-dark mb-3"
+                  style={{ maxWidth: "18rem" }}
+                  key={index}
+                >
+                  <div class="card-header"> name : {item.name}</div>
+                  <div class="card-body">
+                    <p class="card-title"> type : {item.type}</p>
+                    <p class="card-title"> Lead : {item.lead}</p>
+
+                    <p class="card-title">id : {item._id}</p>
+
+                    {/* <p class="card-text">Board : 1</p>
+                    <p class="card-text"> Task : 5</p>
+                    <p class="card-text"> Done : </p> */}
+                  </div>
+                </div>
+              );
+            })}
+        </div>{" "}
+        <Example show={show} handleShow={handleShow} dataParam={abc} />
       </div>
-      <Example show={show} handleShow={handleShow} dataParam={dataParam} />
     </div>
   );
 };

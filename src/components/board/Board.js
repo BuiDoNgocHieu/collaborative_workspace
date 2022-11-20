@@ -34,20 +34,19 @@ const Board = () => {
         <div className="admin-main">
           <div className="title">
             {" "}
-            <div>Projects/Reactjs/Project backlog </div>
+            <div className="name"> Project backlog - Board name </div>
             <span>
               <FaUser className="icon" />
               <Link to="/login">Login</Link>{" "}
             </span>
           </div>
-          <div className="name"> Project backlog - Board name </div>
           <Search />
           <div className="line">
             <button type="button" className="btn btn-success button  ">
               <div onClick={() => handleCreatNewColumn()}>
                 <AiOutlinePlusCircle /> create New column
               </div>
-            </button>{" "}
+              {/* </button>{" "}
             <DropdownButton id="dropdown-basic-button" title="(4)&nbsp;user">
               <Dropdown.Item href="#/action-1">Sơn</Dropdown.Item>
               <Dropdown.Item href="#/action-2">Hiếu</Dropdown.Item>
@@ -57,7 +56,7 @@ const Board = () => {
             <button type="button" class="btn btn-light button  ">
               <div>
                 <IoIosPersonAdd /> invite user
-              </div>
+              </div> */}
             </button>{" "}
           </div>
 
