@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ImSpinner3 } from "react-icons/im";
 import NProgress from "nprogress";
+import http from "../../http-common";
+
 NProgress.start();
 NProgress.done();
 const Login = (props) => {
@@ -30,7 +32,7 @@ const Login = (props) => {
     setLoading(true);
     NProgress.start();
 
-    let res = await axios.post("http://localhost:9090/api/auth/login", {
+    let res = await http.post("auth/login", {
       username,
       password,
     });

@@ -1,7 +1,7 @@
 .column {
     flex: 0 0 auto;
     width: 300px;
-    height: 610px;
+    height: 580px;
     margin-left: 20px;
     >* {
         background-color: #ebecf0;
@@ -24,20 +24,52 @@
             overflow: hidden;
             overflow-x: auto;
         }
-        .option {
-            display: flex;
-            align-items: center;
-            flex: 10%;
-            z-index: 9999;
-            gap: 20px;
-            &:hover {
-                color: rgb(78, 63, 63);
+    }
+    .status {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: gray;
+        height: 40px;
+        .icon {
+            color: blue;
+            cursor: pointer;
+        }
+    }
+    .option {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex: 10%;
+        z-index: 9999;
+        gap: 20px;
+        height: 40px;
+        // &:hover {
+        //     color: rgb(78, 63, 63);
+        // }
+        .reporter {
+            font-size: 20px;
+        }
+        button.Dropdown {
+            padding: 10px 10px;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            background-color: #ebecf0;
+            color: black;
+            line-height: 30px;
+            height: 30px;
+            border-color: #ebecf0;
+            outline: none !important;
+            box-shadow: none !important;
+            &::after {
+                content: "...";
+                border: none;
             }
-            span {
-                line-height: 25px;
-                font-size: 20px;
-                color: red;
-            }
+        }
+        span {
+            line-height: 26px;
+            font-size: 30px;
         }
     }
     footer {
@@ -55,13 +87,29 @@
         max-height: calc(100% - 36px - 36px);
         overflow-y: auto;
         li {
-            background-color: rgb(236, 234, 230);
-            padding: 10px;
+            // background-color: rgb(241, 237, 229);
+            background-color: white;
+            padding: 10px 0;
             border-radius: 2px;
             margin-bottom: 10px;
+            p {
+                padding: 0 10px;
+            }
             &:last-child {
                 // thuoc tinh nay ko danh cho phan tu cuoi cung
                 margin-bottom: 10px;
+            }
+            .card-item_header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 1px solid #ebecf0;
+                padding: 0 10px;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                span {
+                    font-size: 20px;
+                }
             }
         }
     }

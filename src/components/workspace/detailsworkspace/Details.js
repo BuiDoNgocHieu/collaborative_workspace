@@ -8,18 +8,28 @@ import Example from "./create-project";
 import { AiFillEdit } from "react-icons/ai";
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import UpdateProject from "../detailsworkspace/update-project";
+import DeleteProject from "../detailsworkspace/delete-project";
+import { Link, useNavigate } from "react-router-dom";
 
 const WorkspaceDetails = (props) => {
+  const navigate = useNavigate();
+
   const params = useParams();
   const location = useLocation();
   const [show, setShow] = useState(false);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [dataUpdate, setDataUpdate] = useState({});
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [dataDelete, setDataDelete] = useState({});
 
   const handleShowUpdateModal = (user) => {
     setShowUpdateModal(!showUpdateModal);
     setDataUpdate(user);
-    console.log("dataUpdate", user);
+    console.log("user", user);
+  };
+  const handleShowDeleteModal = (user) => {
+    setShowDeleteModal(!showDeleteModal);
+    setDataDelete(user);
   };
   const handleShow = () => {
     setShow(!show);
@@ -31,7 +41,8 @@ const WorkspaceDetails = (props) => {
     let data = await axios.get(
       `http://localhost:9090/api/project?workspaceId=${workspaceId}`
     );
-    // console.log(data);
+    if (data && data.data && data.data.success === 1) {
+    }
     setProject(data.data);
   };
   useEffect(() => {
@@ -58,10 +69,33 @@ const WorkspaceDetails = (props) => {
                   style={{ maxWidth: "30rem" }}
                   key={index}
                 >
-                  <div class="card-header">
+                  <div
+                    style={{ cursor: "pointer" }}
+                    class="card-header"
+                    // onClick={() =>
+                    //   navigate(`Board/${item._id}`, {
+                    //     state: { nameWorkProject: item.name },
+                    //   })
+                    // }
+                  >
                     {" "}
-                    <span style={{ marginLeft: "20px", fontSize: "25px" }}>
-                      {index + 1}- {item.name}{" "}
+                    <span
+                      style={{
+                        marginLeft: "20px",
+                        fontSize: "25px",
+                        overFlow: "auto",
+                      }}
+                    >
+                      {index + 1}-{" "}
+                      <span
+                        onClick={() =>
+                          navigate(`Board/${item._id}`, {
+                            state: { nameWorkProject: item.name },
+                          })
+                        }
+                      >
+                        {item.name}{" "}
+                      </span>
                     </span>
                     <span
                       onClick={() => handleShowUpdateModal(item)}
@@ -79,6 +113,7 @@ const WorkspaceDetails = (props) => {
                         fontSize: "20px",
                         cursor: "pointer",
                       }}
+                      onClick={() => handleShowDeleteModal(item)}
                     >
                       <RiDeleteBack2Fill />
                     </span>
@@ -103,6 +138,12 @@ const WorkspaceDetails = (props) => {
           showUpdateModal={showUpdateModal}
           dataParam={abc}
           update={dataUpdate}
+        />
+        <DeleteProject
+          showDeleteModal={showDeleteModal}
+          handleShowDeleteModal={handleShowDeleteModal}
+          abc={abc}
+          dataDelete={dataDelete}
         />
       </div>
     </div>

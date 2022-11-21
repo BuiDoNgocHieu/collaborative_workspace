@@ -59,9 +59,12 @@ root.render(
             element={<WorkspaceDetails />}
           />
         </Route>
-        <Route path="Board" element={<Board />} />
         <Route path="Backlog" element={<Backlog />} />
 
+        <Route
+          path="workspace/workspacedetails/:id/Board/:id"
+          element={<Board />}
+        />
         <Route path="/listuser" element={<Listuser />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

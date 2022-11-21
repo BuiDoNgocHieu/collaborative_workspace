@@ -123,7 +123,6 @@ const ListGroup = (props) => {
             <input
               class="form-control form-control-sm input-new"
               type="text"
-              
               placeholder=" enter name column"
               aria-label=".form-control-sm example"
               // Ref={RefInput}

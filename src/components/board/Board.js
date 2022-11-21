@@ -13,9 +13,12 @@ import Dropdown from "react-bootstrap/Dropdown";
 import axios from "axios";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useParams, useLocation } from "react-router-dom";
 
 const Board = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const params = useParams();
+  const location = useLocation();
   const islogin = useSelector((state) => state.user.islogin);
   const account = useSelector((state) => state.user.account);
   const [isOpenCreatColumn, setIsOpenCreatColumn] = useState(false);
@@ -35,7 +38,10 @@ const Board = () => {
         />
         <div className="admin-main">
           <div className="title">
-            <div className="name"> Project backlog - Board name </div>
+            <div className="name">
+              {" "}
+              Project : {location?.state.nameWorkProject}{" "}
+            </div>
             {islogin === true ? (
               <>
                 <b

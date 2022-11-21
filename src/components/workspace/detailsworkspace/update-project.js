@@ -15,7 +15,7 @@ const UpdateProject = (props) => {
   const [name, setName] = useState("");
   const [type, setType] = useState("Choose");
   const [id, setId] = useState("");
-
+  console.log(name);
   useEffect(() => {
     if (!_.isEmpty(update)) {
       setName(update.name);

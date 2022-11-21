@@ -14,22 +14,21 @@ function Example(props) {
   const islogin = useSelector((state) => state.user.islogin);
   const account = useSelector((state) => state.user.account);
   const [name, setName] = useState("");
-  const [lead, setLead] = useState("");
 
   const [type, setType] = useState("Choose");
 
-  const handleCreatWorkSpace = async () => {
-    let data = {
+  const handleCreatProject = async () => {
+    let dataCreate = {
       workspaceId: workspaceId,
       name: name,
       type: type,
       lead: ` ${account.username}`,
     };
-    console.log(data);
+    console.log(dataCreate);
 
     let res = await axios.post(
       `http://localhost:9090/api/project/create`,
-      data
+      dataCreate
     );
     if (!name) {
       toast.error("please enter name");
@@ -82,11 +81,16 @@ function Example(props) {
                 onChange={(event) => setType(event.target.value)}
               >
                 <option>Choose</option>
-                <option>Kanban software development</option>
-                <option>Basic software development</option>
-                <option>Task management</option>
-                <option>Project management</option>
-                <option>Process management</option>
+                <option>Sales</option>
+                <option>Operations</option>
+                <option>legal</option>
+                <option>Human Resources</option>
+                <option>Maketing</option>
+                <option>Customer Service</option>
+                <option>Finsnce</option>
+                <option>It support</option>
+                <option>Software Development</option>
+                <option>Other</option>
               </select>
             </div>
             <div className="col-md-12"></div>
@@ -96,7 +100,7 @@ function Example(props) {
           <Button variant="secondary" onClick={handleShow}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleCreatWorkSpace}>
+          <Button variant="primary" onClick={handleCreatProject}>
             Save Changes
           </Button>
         </Modal.Footer>

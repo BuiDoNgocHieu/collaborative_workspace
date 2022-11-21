@@ -7,7 +7,6 @@ function Example(props) {
   const { view, handleCloseView, fetchData } = props;
 
   const [name, setName] = useState("");
-  const [createBy, setCreateBy] = useState("");
 
   const [type, setType] = useState("Choose");
 

@@ -4,17 +4,22 @@ import Modal from "react-bootstrap/Modal";
 import { toast } from "react-toastify";
 import axios from "axios";
 
-function Delete(props) {
-  const { HandleShowDelete, setHandleShowDelete, dataDelete, fetchData } =
-    props;
-  const handleDeleteWorkSpace = async () => {
-    let res = await axios.delete(`workspace/${dataDelete._id} `);
+function DeleteProject(props) {
+  const { showDeleteModal, handleShowDeleteModal, dataDelete, abc } = props;
+  const handleDeleteProject = async (userId) => {
+    let res = await axios.delete(
+      `http://localhost:9090/api/project/${dataDelete._id} `
+    );
+
     if (res && res.data.success === 1) {
+      console.log("dataDelete", dataDelete);
       console.log("res", res);
-      toast.success("delete  workspace success");
-      setHandleShowDelete();
-      await fetchData();
+
+      toast.success("delete  project success");
+      handleShowDeleteModal();
+      await abc();
     }
+
     if (res && res.data.success === 0) {
       toast.error(res.data.message);
       return;
@@ -23,8 +28,8 @@ function Delete(props) {
   return (
     <>
       <Modal
-        show={HandleShowDelete}
-        onHide={setHandleShowDelete}
+        show={showDeleteModal}
+        onHide={handleShowDeleteModal}
         animation={false}
         backdrop="static"
       >
@@ -34,21 +39,20 @@ function Delete(props) {
         {dataDelete && dataDelete.name ? (
           <>
             <Modal.Body>
-              Are you sure to delete this Workspace name=
-              <b>{dataDelete.name}</b>
+              Are you sure to delete Workspace :<b>{dataDelete.name}</b>
             </Modal.Body>
           </>
         ) : (
           <Modal.Body>
-            Are you sure to delete this user.name=<b>...</b>
+            Are you sure to delete Workspace :<b>...</b>
           </Modal.Body>
         )}
 
         <Modal.Footer>
-          <Button variant="secondary" onClick={setHandleShowDelete}>
+          <Button variant="secondary" onClick={handleShowDeleteModal}>
             Exit
           </Button>
-          <Button variant="primary" onClick={handleDeleteWorkSpace}>
+          <Button variant="primary" onClick={handleDeleteProject}>
             Delete
           </Button>
         </Modal.Footer>
@@ -57,4 +61,4 @@ function Delete(props) {
   );
 }
 
-export default Delete;
+export default DeleteProject;
